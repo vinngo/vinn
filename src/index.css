@@ -23,6 +23,7 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
+    --dot-pattern: 214.3 31.8% 91.4%;
 }
 
 .dark {
@@ -46,6 +47,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 94.1%;
+    --dot-pattern: 217.2 32.6% 25%;
 }
 
 @theme {
@@ -69,6 +71,7 @@
     --color-input: hsl(var(--input));
     --color-ring: hsl(var(--ring));
     --border-radius: var(--radius);
+    --color-dot-pattern: hsl(var(--dot-pattern));
 }
 
 @layer base {
@@ -78,7 +81,10 @@
 
     body {
         background-color: hsl(var(--background));
-        background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-image: radial-gradient(
+            hsl(var(--dot-pattern)) 1px,
+            transparent 1px
+        );
         background-size: 16px 16px;
         color: hsl(var(--foreground));
         font-family:
@@ -87,10 +93,6 @@
         font-feature-settings:
             "rlig" 1,
             "calt" 1;
-    }
-
-    .dark body {
-        background-image: none;
     }
 
     html {
