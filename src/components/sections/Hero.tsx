@@ -56,14 +56,14 @@ export default function Hero() {
           {/* Social Links */}
           <div className="flex justify-center space-x-6 mb-12">
             <a
-              href="#"
+              href="https://github.com/vinngo/"
               className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
               aria-label="GitHub"
             >
               <Github className="h-6 w-6" />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/vinngo/"
               className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
               aria-label="LinkedIn"
             >

@@ -68,11 +68,10 @@ export default function Projects() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Featured Projects
+              My Projects
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              A showcase of my recent work in web development, mobile apps, and
-              AI/ML
+              My recent work in web dev, mobile, and AI/ML
             </p>
           </div>
 

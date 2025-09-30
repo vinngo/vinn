@@ -1,29 +1,31 @@
-import { useState } from 'react'
-import { Mail, Phone, MapPin, Github, Linkedin, Download, Send } from 'lucide-react'
+import { useState } from "react";
+import { Mail, Phone, MapPin, Github, Linkedin, Send } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  })
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log('Form submitted:', formData)
+    console.log("Form submitted:", formData);
     // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' })
-  }
+    setFormData({ name: "", email: "", subject: "", message: "" });
+  };
 
   return (
     <section id="contact" className="py-20 bg-background">
@@ -35,8 +37,8 @@ export default function Contact() {
               Get In Touch
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Let's connect! Whether you have a project in mind, want to collaborate,
-              or just want to say hello, I'd love to hear from you.
+              Let's connect! Whether you have a project in mind, want to
+              collaborate, or just want to say hello, I'd love to hear from you.
             </p>
           </div>
 
@@ -48,8 +50,9 @@ export default function Contact() {
                   Let's Start a Conversation
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
-                  I'm always open to discussing new opportunities, interesting projects,
-                  or potential collaborations. Don't hesitate to reach out!
+                  I'm always open to discussing new opportunities, interesting
+                  projects, or potential collaborations. Don't hesitate to reach
+                  out!
                 </p>
               </div>
 
@@ -59,8 +62,11 @@ export default function Contact() {
                   <Mail className="h-6 w-6 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Email</p>
-                    <a href="mailto:vincent@example.com" className="text-muted-foreground hover:text-primary transition-colors">
-                      vincent@example.com
+                    <a
+                      href="mailto:ngovincent9593@gmail.com"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      ngovincent9593@gmail.com
                     </a>
                   </div>
                 </div>
@@ -69,8 +75,11 @@ export default function Contact() {
                   <Phone className="h-6 w-6 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Phone</p>
-                    <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                      +1 (234) 567-8900
+                    <a
+                      href="tel:+1234567890"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      +1 (669) 294-0690
                     </a>
                   </div>
                 </div>
@@ -79,7 +88,7 @@ export default function Contact() {
                   <MapPin className="h-6 w-6 text-primary" />
                   <div>
                     <p className="font-medium text-foreground">Location</p>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">San Jose, CA</p>
                   </div>
                 </div>
               </div>
@@ -87,7 +96,9 @@ export default function Contact() {
               {/* Social Links & Resume */}
               <div className="space-y-6">
                 <div>
-                  <h4 className="font-semibold text-foreground mb-4">Connect with me</h4>
+                  <h4 className="font-semibold text-foreground mb-4">
+                    Connect with me
+                  </h4>
                   <div className="flex space-x-4">
                     <a
                       href="#"
@@ -105,13 +116,6 @@ export default function Contact() {
                     </a>
                   </div>
                 </div>
-
-                <div>
-                  <button className="flex items-center space-x-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
-                    <Download className="h-5 w-5" />
-                    <span>Download Resume</span>
-                  </button>
-                </div>
               </div>
             </div>
 
@@ -120,7 +124,10 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Name *
                     </label>
                     <input
@@ -135,7 +142,10 @@ export default function Contact() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-foreground mb-2"
+                    >
                       Email *
                     </label>
                     <input
@@ -152,7 +162,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Subject *
                   </label>
                   <input
@@ -168,7 +181,10 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -196,5 +212,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
