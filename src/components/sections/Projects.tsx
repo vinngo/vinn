@@ -112,7 +112,6 @@ export default function Projects() {
                           className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary"
                           initial={false}
                           transition={{
-                            type: "delay",
                             stiffness: 500,
                             damping: 30,
                           }}
@@ -154,7 +153,6 @@ export default function Projects() {
                           className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary"
                           initial={false}
                           transition={{
-                            type: "delay",
                             stiffness: 500,
                             damping: 30,
                           }}
