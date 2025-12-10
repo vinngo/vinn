@@ -47,10 +47,13 @@ export default function Skills() {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+            <h2
+              className="text-3xl sm:text-4xl text-foreground mb-4"
+              style={{ fontFamily: "Lora" }}
+            >
               Skills & Technologies
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               A comprehensive toolkit for building modern, scalable applications
             </p>
           </div>

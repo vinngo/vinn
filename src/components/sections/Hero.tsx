@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -6,7 +6,7 @@ export default function Hero() {
       <div className="container mx-auto pt-50 px-4 sm:px-6 lg:px-8 text-left">
         <div className="max-w-4xl mx-auto">
           {/* Main content */}
-          <div className="mb-8">
+          <div className="mb-8 mx-auto">
             <h1
               className="text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground mb-6"
               style={{ fontFamily: "Lora, serif" }}
@@ -39,13 +39,6 @@ export default function Hero() {
               aria-label="LinkedIn"
             >
               <Linkedin className="h-6 w-6" />
-            </a>
-            <a
-              href="#"
-              className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
-              aria-label="Email"
-            >
-              <Mail className="h-6 w-6" />
             </a>
           </div>
         </div>

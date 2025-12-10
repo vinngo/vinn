@@ -10,8 +10,8 @@ function App() {
     <ThemeProvider>
       <Layout>
         <Hero />
-        <Skills />
         <Projects />
+        <Skills />
         <Experience />
       </Layout>
     </ThemeProvider>
