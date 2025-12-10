@@ -5,7 +5,8 @@ export interface Project {
   technologies: string[];
   category: "web" | "mobile" | "desktop" | "ai";
   complexity: "beginner" | "intermediate" | "advanced";
-  image: string;
+  image?: string;
+  video?: string;
   demoUrl?: string;
   githubUrl?: string;
   featured: boolean;
@@ -13,6 +14,22 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: "codecompass",
+    title: "CodeCompass",
+    description:
+      "AI-powered collaborative documentation chatbot for codebases.",
+    technologies: ["Next.JS", "FastAPI", "LangChain", "ChromaDB"],
+    category: "web",
+    complexity: "advanced",
+    image: "/project-images/codecompass.jpg",
+    video:
+      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/code-compass-demo-complete-1764882236499.mp4#t=29,103",
+    demoUrl: "https://codecompass-eight.vercel.app",
+    githubUrl: "https://github.com/vinngo/codecompass",
+    featured: true,
+    status: "completed",
+  },
   {
     id: "cryb",
     title: "cryb",
@@ -39,10 +56,9 @@ export const projects: Project[] = [
     technologies: ["Next.JS", "PostgreSQL", "AWS"],
     category: "web",
     complexity: "advanced",
-    image: "/project-images/task-app.jpg",
     demoUrl: "https://twmnd.vercel.app",
     githubUrl: "https://github.com/vinngo/twmnd",
-    featured: true,
+    featured: false,
     status: "completed",
   },
   {
@@ -53,7 +69,6 @@ export const projects: Project[] = [
     technologies: ["React Native", "Supabase", "AWS"],
     category: "mobile",
     complexity: "advanced",
-    image: "/project-images/weather-app.jpg",
     demoUrl: "https://github.com/vinngo/accountable",
     githubUrl: "https://github.com/vinngo/accountable",
     featured: false,
