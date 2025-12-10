@@ -24,7 +24,7 @@ export const projects: Project[] = [
     complexity: "advanced",
     image: "/project-images/codecompass.jpg",
     video:
-      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/code-compass-demo-complete-1764882236499.mp4#t=29,103",
+      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/code-compass-demo-complete-compressed.mp4#t=29,103",
     demoUrl: "https://codecompass-eight.vercel.app",
     githubUrl: "https://github.com/vinngo/codecompass",
     featured: true,
@@ -43,7 +43,8 @@ export const projects: Project[] = [
     ],
     category: "web",
     complexity: "intermediate",
-    image: "/project-images/portfolio.jpg",
+    video:
+      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/cryb-demo.mp4#t=20,60",
     demoUrl: "https://cryb.vercel.app",
     githubUrl: "https://github.com/vinngo/cryb",
     featured: true,

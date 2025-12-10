@@ -199,6 +199,7 @@ export default function Projects() {
                       autoPlay
                       loop
                       muted
+                      controls
                       playsInline
                     />
                   ) : project.image ? (
@@ -223,7 +224,12 @@ export default function Projects() {
                 <div className="p-6">
                   {/* Project Header */}
                   <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-light text-foreground line-clamp-2">
+                    <h3
+                      className="text-xl font-light text-foreground line-clamp-2"
+                      style={{
+                        fontFamily: "Lora",
+                      }}
+                    >
                       {project.title}
                     </h3>
                     {project.featured && (
