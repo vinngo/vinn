@@ -16,7 +16,6 @@ export function ThemeProvider({
   const [theme, setTheme] = useState<Theme>(() => {
     try {
       const stored = localStorage.getItem(storageKey) as Theme;
-      console.log("Initial theme from localStorage:", stored);
       return stored || defaultTheme;
     } catch (error) {
       console.error("Error reading from localStorage:", error);
@@ -26,7 +25,6 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
-    console.log("ThemeProvider useEffect - theme:", theme);
 
     root.classList.remove("dark");
 
@@ -35,7 +33,6 @@ export function ThemeProvider({
         .matches
         ? "dark"
         : "light";
-      console.log("System theme detected:", systemTheme);
       if (systemTheme === "dark") {
         root.classList.add("dark");
       }
@@ -43,20 +40,16 @@ export function ThemeProvider({
     }
 
     if (theme === "dark") {
-      console.log("Adding dark class");
       root.classList.add("dark");
     }
-    console.log("Document classes:", root.classList.toString());
   }, [theme]);
 
   const value = {
     theme,
     setTheme: (newTheme: Theme) => {
-      console.log("setTheme called with:", newTheme);
       try {
         localStorage.setItem(storageKey, newTheme);
         setTheme(newTheme);
-        console.log("Theme updated successfully to:", newTheme);
       } catch (error) {
         console.error("Error setting theme:", error);
         setTheme(newTheme); // Still update state even if localStorage fails
