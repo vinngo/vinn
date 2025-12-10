@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Menu, X, Moon, Sun, Monitor } from "lucide-react";
-import { useTheme } from "../../hooks/useTheme";
 
 const navigation = [
   { name: "About", href: "#about" },
@@ -12,32 +10,6 @@ const navigation = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-
-  const cycleTheme = () => {
-    console.log("Current theme:", theme);
-    if (theme === "light") {
-      console.log("Switching to dark");
-      setTheme("dark");
-    } else if (theme === "dark") {
-      console.log("Switching to system");
-      setTheme("system");
-    } else {
-      console.log("Switching to light");
-      setTheme("light");
-    }
-  };
-
-  const getThemeIcon = () => {
-    switch (theme) {
-      case "light":
-        return <Sun className="h-5 w-5" />;
-      case "dark":
-        return <Moon className="h-5 w-5" />;
-      default:
-        return <Monitor className="h-5 w-5" />;
-    }
-  };
 
   const smoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -81,32 +53,6 @@ export default function Header() {
               ))}
             </div>
           </nav>
-
-          {/* Theme Toggle & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            <button
-              onClick={cycleTheme}
-              className="p-2 text-foreground hover:text-primary transition-colors"
-              aria-label="Toggle theme"
-            >
-              {getThemeIcon()}
-            </button>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 text-foreground hover:text-primary transition-colors"
-                aria-label="Toggle menu"
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
-          </div>
         </div>
 
         {/* Mobile Navigation */}
