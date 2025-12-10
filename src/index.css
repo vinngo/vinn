@@ -1,94 +1,91 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
 
 /* Define CSS variables for light and dark themes */
 :root {
     /* Light mode colors */
-    --background: transparent;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --background: 0.9702 0 129.63;
+    --foreground: 0.19 0.045 265;
+    --card: 1 0 0;
+    --card-foreground: 0.19 0.045 265;
+    --popover: 1 0 0;
+    --popover-foreground: 0.19 0.045 265;
+    --primary: 0.61 0.19 264;
+    --primary-foreground: 0.97 0.01 240;
+    --secondary: 0.96 0.01 240;
+    --secondary-foreground: 0.19 0.045 265;
+    --muted: 0.96 0.01 240;
+    --muted-foreground: 0.57 0.02 255;
+    --accent: 0.96 0.01 240;
+    --accent-foreground: 0.19 0.045 265;
+    --destructive: 0.63 0.22 25;
+    --destructive-foreground: 0.97 0.01 240;
+    --border: 0.92 0.01 245;
+    --input: 0.92 0.01 245;
+    --ring: 0.61 0.19 264;
     --radius: 0.5rem;
-    --dot-pattern: 214.3 31.8% 91.4%;
+    --dot-pattern: 0.92 0.01 245;
 }
 
 .dark {
     /* Dark mode colors */
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
-    --dot-pattern: 217.2 32.6% 25%;
+    --background: 0 0 0;
+    --foreground: 0.97 0.01 240;
+    --card: 0 0 0;
+    --card-foreground: 0.97 0.01 240;
+    --popover: 0.19 0.045 265;
+    --popover-foreground: 0.97 0.01 240;
+    --primary: 0.67 0.19 255;
+    --primary-foreground: 0.19 0.045 265;
+    --secondary: 0.31 0.04 255;
+    --secondary-foreground: 0.97 0.01 240;
+    --muted: 0.31 0.04 255;
+    --muted-foreground: 0.72 0.02 255;
+    --accent: 0.31 0.04 255;
+    --accent-foreground: 0.97 0.01 240;
+    --destructive: 0.41 0.15 25;
+    --destructive-foreground: 0.97 0.01 240;
+    --border: 0.31 0.04 255;
+    --input: 0.31 0.04 255;
+    --ring: 0.95 0.02 255;
+    --dot-pattern: 0.38 0.04 255;
 }
 
 @theme {
-    --color-background: hsl(var(--background));
-    --color-foreground: hsl(var(--foreground));
-    --color-card: hsl(var(--card));
-    --color-card-foreground: hsl(var(--card-foreground));
-    --color-popover: hsl(var(--popover));
-    --color-popover-foreground: hsl(var(--popover-foreground));
-    --color-primary: hsl(var(--primary));
-    --color-primary-foreground: hsl(var(--primary-foreground));
-    --color-secondary: hsl(var(--secondary));
-    --color-secondary-foreground: hsl(var(--secondary-foreground));
-    --color-muted: hsl(var(--muted));
-    --color-muted-foreground: hsl(var(--muted-foreground));
-    --color-accent: hsl(var(--accent));
-    --color-accent-foreground: hsl(var(--accent-foreground));
-    --color-destructive: hsl(var(--destructive));
-    --color-destructive-foreground: hsl(var(--destructive-foreground));
-    --color-border: hsl(var(--border));
-    --color-input: hsl(var(--input));
-    --color-ring: hsl(var(--ring));
+    --color-background: oklch(var(--background));
+    --color-foreground: oklch(var(--foreground));
+    --color-card: oklch(var(--card));
+    --color-card-foreground: oklch(var(--card-foreground));
+    --color-popover: oklch(var(--popover));
+    --color-popover-foreground: oklch(var(--popover-foreground));
+    --color-primary: oklch(var(--primary));
+    --color-primary-foreground: oklch(var(--primary-foreground));
+    --color-secondary: oklch(var(--secondary));
+    --color-secondary-foreground: oklch(var(--secondary-foreground));
+    --color-muted: oklch(var(--muted));
+    --color-muted-foreground: oklch(var(--muted-foreground));
+    --color-accent: oklch(var(--accent));
+    --color-accent-foreground: oklch(var(--accent-foreground));
+    --color-destructive: oklch(var(--destructive));
+    --color-destructive-foreground: oklch(var(--destructive-foreground));
+    --color-border: oklch(var(--border));
+    --color-input: oklch(var(--input));
+    --color-ring: oklch(var(--ring));
     --border-radius: var(--radius);
-    --color-dot-pattern: hsl(var(--dot-pattern));
+    --color-dot-pattern: oklch(var(--dot-pattern));
 }
 
 @layer base {
     * {
-        border-color: hsl(var(--border));
+        border-color: oklch(var(--border));
     }
 
     body {
-        background-color: hsl(var(--background));
-        background-image: radial-gradient(
-            hsl(var(--dot-pattern)) 1px,
-            transparent 1px
-        );
+        background-color: oklch(var(--background));
         background-size: 16px 16px;
-        color: hsl(var(--foreground));
+        color: oklch(var(--foreground));
         font-family:
-            ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+            ui-sans-serif, system-ui, sans-serif, "Lora", "Apple Color Emoji",
             "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
         font-feature-settings:
             "rlig" 1,
