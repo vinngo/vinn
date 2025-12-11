@@ -286,7 +286,7 @@ export default function Projects() {
                           {project.technologies.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-muted text-muted-foreground font-extralight text-xs rounded"
+                              className="px-2 py-1 bg-muted text-muted-foreground font-mono text-xs rounded whitespace-nowrap"
                             >
                               {tech}
                             </span>
