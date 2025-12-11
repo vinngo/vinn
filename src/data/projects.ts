@@ -24,7 +24,7 @@ export const projects: Project[] = [
     complexity: "advanced",
     image: "/project-images/codecompass.jpg",
     video:
-      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/code-compass-demo-complete-compressed.mp4#t=29,103",
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/code-compass-demo-complete-compressed.mp4#t=29,103",
     demoUrl: "https://codecompass-eight.vercel.app",
     githubUrl: "https://github.com/vinngo/codecompass",
     featured: true,
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     category: "web",
     complexity: "intermediate",
     video:
-      "https://nnxh6zxfmcbvmwfx.public.blob.vercel-storage.com/demos/cryb-demo.mp4#t=20,60",
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/cryb-demo.mp4#t=20,60",
     demoUrl: "https://cryb.vercel.app",
     githubUrl: "https://github.com/vinngo/cryb",
     featured: true,
@@ -70,6 +70,8 @@ export const projects: Project[] = [
     technologies: ["React Native", "Supabase", "AWS"],
     category: "mobile",
     complexity: "advanced",
+    video:
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/accountable-demo.mp4",
     demoUrl: "https://github.com/vinngo/accountable",
     githubUrl: "https://github.com/vinngo/accountable",
     featured: false,
