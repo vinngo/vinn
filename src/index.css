@@ -14,9 +14,9 @@
     --primary-foreground: 0.97 0.01 240;
     --secondary: 0.96 0.01 240;
     --secondary-foreground: 0.19 0.045 265;
-    --muted: 0.96 0.01 240;
+    --muted: 0.96 0 240;
     --muted-foreground: 0.57 0.02 255;
-    --accent: 0.96 0.01 240;
+    --accent: 0.96 0 240;
     --accent-foreground: 0.19 0.045 265;
     --destructive: 0.63 0.22 25;
     --destructive-foreground: 0.97 0.01 240;
@@ -73,6 +73,13 @@
     --color-ring: oklch(var(--ring));
     --border-radius: var(--radius);
     --color-dot-pattern: oklch(var(--dot-pattern));
+
+    /* Font families */
+    --font-mono:
+        "SF Mono", "SFMono-Regular", ui-monospace, "Menlo", "Monaco",
+        "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono",
+        "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono",
+        "Courier New", monospace;
 }
 
 @layer base {
@@ -86,7 +93,7 @@
         color: oklch(var(--foreground));
         font-family:
             ui-sans-serif, system-ui, sans-serif, "Lora", "Apple Color Emoji",
-            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            "Noto Color Emoji";
         font-feature-settings:
             "rlig" 1,
             "calt" 1;

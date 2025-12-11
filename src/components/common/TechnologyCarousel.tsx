@@ -50,10 +50,7 @@ export default function TechnologyCarousel({
         {technologies.map((tech, index) => (
           <span
             key={`tech-${index}`}
-            className="px-2 py-1 bg-muted text-muted-foreground font-extralight text-xs rounded whitespace-nowrap"
-            style={{
-              fontFamily: "monospace",
-            }}
+            className="px-2 py-1 bg-muted text-muted-foreground font-mono text-xs rounded whitespace-nowrap"
           >
             {tech}
           </span>
@@ -63,10 +60,7 @@ export default function TechnologyCarousel({
         {technologies.map((tech, index) => (
           <span
             key={`tech-dup-${index}`}
-            className="px-2 py-1 bg-muted text-muted-foreground font-extralight text-xs rounded whitespace-nowrap"
-            style={{
-              fontFamily: "monospace",
-            }}
+            className="px-2 py-1 bg-muted text-muted-foreground font-mono text-xs rounded whitespace-nowrap"
           >
             {tech}
           </span>

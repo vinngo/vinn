@@ -1,4 +1,5 @@
 import { Code2, Database, Globe, Wrench, Users, Lightbulb } from "lucide-react";
+import SectionTitle from "../common/SectionTitle";
 
 const skillCategories = [
   {
@@ -46,17 +47,12 @@ export default function Skills() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2
-              className="text-3xl sm:text-4xl text-foreground mb-4"
-              style={{ fontFamily: "Lora" }}
-            >
-              Skills & Technologies
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light">
-              A comprehensive toolkit for building modern, scalable applications
-            </p>
-          </div>
+          <SectionTitle
+            title={"Skills & Technologies"}
+            subtitle={
+              "A comprehensive toolkit for building modern, scalable applications"
+            }
+          />
 
           {/* Skills Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
