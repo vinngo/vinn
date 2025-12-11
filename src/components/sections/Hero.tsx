@@ -1,4 +1,5 @@
 import { Github, Linkedin } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function Hero() {
   return (
@@ -7,25 +8,46 @@ export default function Hero() {
         <div className="max-w-4xl mx-auto">
           {/* Main content */}
           <div className="mb-8 mx-auto">
-            <h1
-              className="text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground mb-6"
+            <div className="relative">
+              <motion.h1
+                className="text-7xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-foreground mb-7"
+                style={{ fontFamily: "Lora, serif" }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+              >
+                Vincent Ngo
+              </motion.h1>
+            </div>
+            <motion.p
+              className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 font-light"
               style={{ fontFamily: "Lora, serif" }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
-              Vincent Ngo
-            </h1>
-
-            <p className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 font-light">
               CS @ UCSC & Full-Stack Developer
-            </p>
+            </motion.p>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-2x font-extralight bb-12 leading-relaxed">
+            <motion.p
+              className="text-lg sm:text-xl text-muted-foreground max-w-2x font-extralight bb-12 leading-relaxed"
+              style={{ fontFamily: "Lora, serif" }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               Meticulous full-stack builder, combining design and functionality
               to inspire users.
-            </p>
+            </motion.p>
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-left space-x-6 mb-12">
+          <motion.div
+            className="flex justify-left space-x-6 mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
             <a
               href="https://github.com/vinngo/"
               className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
@@ -40,7 +62,7 @@ export default function Hero() {
             >
               <Linkedin className="h-6 w-6" />
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
