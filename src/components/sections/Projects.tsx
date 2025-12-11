@@ -82,7 +82,7 @@ export default function Projects() {
               Most recently...
             </h2>
             <p className="text-xl text-muted-foreground font-light max-w-2xl mx-auto">
-              My recent work in web dev and mobile.
+              what I've been building.
             </p>
           </motion.div>
 
@@ -253,7 +253,7 @@ export default function Projects() {
                         {hoveredProjectId === project.id && <Emphasis />}
                       </div>
                       {project.featured && (
-                        <span className="px-2 py-1 text-foreground text-xs font-extralight rounded-full shrink-0 ml-2">
+                        <span className="px-2 py-1 text-foreground text-xs rounded-full shrink-0 ml-2">
                           Featured
                         </span>
                       )}
@@ -262,13 +262,19 @@ export default function Projects() {
                     {/* Status and Complexity */}
                     <div className="flex gap-2 mb-3">
                       <span
-                        className={`px-2 py-1 text-xs font-extralight rounded-full ${getStatusColor(project.status)}`}
+                        className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
+                        style={{
+                          fontFamily: "sans-serif",
+                        }}
                       >
                         {project.status.charAt(0).toUpperCase() +
                           project.status.slice(1).replace("-", " ")}
                       </span>
                       <span
-                        className={`px-2 py-1 text-xs font-extralight rounded-full ${getComplexityColor(project.complexity)}`}
+                        className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
+                        style={{
+                          fontFamily: "sans-serif",
+                        }}
                       >
                         {project.complexity.charAt(0).toUpperCase() +
                           project.complexity.slice(1)}

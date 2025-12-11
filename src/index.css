@@ -29,25 +29,25 @@
 
 .dark {
     /* Dark mode colors */
-    --background: 0 0 0;
+    --background: 0.1684 0 0;
     --foreground: 0.97 0.01 240;
     --card: 0 0 0;
     --card-foreground: 0.97 0.01 240;
     --popover: 0.19 0.045 265;
     --popover-foreground: 0.97 0.01 240;
-    --primary: 0.67 0.19 255;
+    --primary: 0.9702 0 129.63;
     --primary-foreground: 0.19 0.045 265;
     --secondary: 0.31 0.04 255;
     --secondary-foreground: 0.97 0.01 240;
-    --muted: 0.31 0.04 255;
+    --muted: 0.25 0.01 264;
     --muted-foreground: 0.72 0.02 255;
     --accent: 0.31 0.04 255;
     --accent-foreground: 0.97 0.01 240;
     --destructive: 0.41 0.15 25;
     --destructive-foreground: 0.97 0.01 240;
-    --border: 0.31 0.04 255;
+    --border: 0.25 0.01 264;
     --input: 0.31 0.04 255;
-    --ring: 0.95 0.02 255;
+    --ring: 0.9702 0 129.63;
     --dot-pattern: 0.38 0.04 255;
 }
 

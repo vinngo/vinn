@@ -51,6 +51,9 @@ export default function TechnologyCarousel({
           <span
             key={`tech-${index}`}
             className="px-2 py-1 bg-muted text-muted-foreground font-extralight text-xs rounded whitespace-nowrap"
+            style={{
+              fontFamily: "monospace",
+            }}
           >
             {tech}
           </span>
@@ -61,6 +64,9 @@ export default function TechnologyCarousel({
           <span
             key={`tech-dup-${index}`}
             className="px-2 py-1 bg-muted text-muted-foreground font-extralight text-xs rounded whitespace-nowrap"
+            style={{
+              fontFamily: "monospace",
+            }}
           >
             {tech}
           </span>
