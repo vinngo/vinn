@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: "codecompass",
     title: "CodeCompass",
     description:
-      "AI-powered collaborative documentation chatbot for codebases.",
+      "Open source AI-powered collaborative documentation chatbot for indie devs and enterprise alike.",
     technologies: [
       "Next.JS",
       "FastAPI",
@@ -26,6 +26,8 @@ export const projects: Project[] = [
       "ChromaDB",
       "Voyager",
       "Treesitter",
+      "S3",
+      "PostgreSQL",
     ],
     category: "web",
     complexity: "advanced",
@@ -70,7 +72,7 @@ export const projects: Project[] = [
       "A twist on social networking apps with a focus on unwavering discipline",
     technologies: ["React Native", "Supabase", "S3"],
     category: "mobile",
-    complexity: "advanced",
+    complexity: "intermediate",
     video:
       "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/accountable-demo.mp4",
     demoUrl: "https://github.com/vinngo/accountable",

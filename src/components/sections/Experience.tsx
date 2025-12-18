@@ -1,6 +1,21 @@
-import { GraduationCap, Briefcase, Calendar } from "lucide-react";
+import SectionTitle from "../common/SectionTitle";
+import ExperienceComponent from "../common/Experience";
+import { motion } from "motion/react";
+import { useState } from "react";
+import Emphasis from "../common/Emphasis";
 
-const experiences = [
+export type Experience = {
+  type: string;
+  title: string;
+  organization: string;
+  location: string;
+  period: string;
+  description: string;
+  highlights: string[];
+  current: boolean;
+};
+
+const experiences: Experience[] = [
   {
     type: "work",
     title: "Software Engineering Intern",
@@ -34,140 +49,47 @@ const experiences = [
   },
   {
     type: "education",
-    title: "Bachelor of Science in Computer Science",
-    organization: "University of California, Santa Cruz",
+    title: "Computer Science B.S.",
+    organization: "UC Santa Cruz",
     location: "Santa Cruz, CA",
     period: "2023 - 2027 (Expected)",
     description:
       "Pursuing CS with minor in Statistics. Comprehensive understanding of DSA, Computer Architecture, Systems, and AI/ML",
     highlights: [
-      "Relevant Coursework: Data Structures & Algorithms, Computer Architecture, Computer Systems, Machine Learning, Artificial Intelligence, Statistics and Probability Theory, Linear Algebra",
+      `Relevant Coursework: Data Structures & Algorithms, Computer Architecture, Computer Systems, Software Engineering, Machine Learning, Statistics and Probability Theory, Linear Algebra`,
     ],
     current: true,
   },
 ];
 
-/*
-const certifications = [
-  {
-    title: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    credentialUrl: "#",
-  },
-  {
-    title: "React Developer Certification",
-    issuer: "Meta",
-    date: "2023",
-    credentialUrl: "#",
-  },
-  {
-    title: "JavaScript Algorithms and Data Structures",
-    issuer: "freeCodeCamp",
-    date: "2023",
-    credentialUrl: "#",
-  },
-];
-*/
-
 export default function Experience() {
-  const getExperienceIcon = (type: string) => {
-    return type === "education" ? (
-      <GraduationCap className="h-6 w-6" />
-    ) : (
-      <Briefcase className="h-6 w-6" />
-    );
-  };
+  const [scheduleHover, setScheduleHover] = useState(false);
+  const [linkedinHover, setLinkedinHover] = useState(false);
 
   return (
     <section id="experience" className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Experience & Education
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              My academic and professional journey in technology
-            </p>
-          </div>
+          <SectionTitle title="Previously..." subtitle="in academia and tech" />
           {/* Timeline */}
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
-
             {/* Experience Items */}
-            <div className="space-y-12">
+            <motion.div
+              className="space-y-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
               {experiences.map((experience, index) => (
-                <div key={index} className="relative flex items-start">
-                  {/* Timeline Dot */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground relative z-10">
-                    {getExperienceIcon(experience.type)}
-                  </div>
-
-                  {/* Content */}
-                  <div className="ml-8 flex-grow">
-                    <div className="bg-card rounded-lg border border-border p-6 shadow-sm">
-                      {/* Header */}
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                        <div>
-                          <h3 className="text-xl font-bold text-foreground mb-1">
-                            {experience.title}
-                          </h3>
-                          <p className="text-primary font-medium">
-                            {experience.organization}
-                          </p>
-                          <p className="text-muted-foreground text-sm">
-                            {experience.location}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2 mt-2 sm:mt-0">
-                          <Calendar className="h-4 w-4 text-muted-foreground" />
-                          <span className="text-muted-foreground text-sm">
-                            {experience.period}
-                          </span>
-                          {experience.current && (
-                            <span className="px-2 py-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 text-xs font-medium rounded-full">
-                              Current
-                            </span>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-muted-foreground mb-4 leading-relaxed">
-                        {experience.description}
-                      </p>
-
-                      {/* Highlights */}
-                      <div>
-                        <h4 className="font-semibold text-foreground mb-2">
-                          {experience.type === "education"
-                            ? "Academic Highlights"
-                            : "Key Achievements"}
-                        </h4>
-                        <ul className="space-y-2">
-                          {experience.highlights.map(
-                            (highlight, highlightIndex) => (
-                              <li
-                                key={highlightIndex}
-                                className="text-muted-foreground text-sm flex items-start gap-2"
-                              >
-                                <span className="text-primary mt-1 flex-shrink-0">
-                                  •
-                                </span>
-                                {highlight}
-                              </li>
-                            ),
-                          )}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                <div
+                  key={index}
+                  className="relative flex items-start pb-5 border-b"
+                >
+                  <ExperienceComponent experience={experience} />
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
           {/* Certifications */}
           <div className="mt-20">
@@ -217,23 +139,37 @@ export default function Experience() {
           </div>
           {/* Call to Action */}
           <div className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-lg p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Don't Be A Stranger
-              </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Whether it be chat or coworking session, let's discuss how we
-                can build something amazing together.
-              </p>
-              <button
-                onClick={() => {
-                  const contactSection = document.querySelector("#contact");
-                  contactSection?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+            <div className="p-8">
+              <SectionTitle
+                title="Don't be a stranger..."
+                subtitle="Let's build something inspiring together"
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                Let's Connect
-              </button>
+                <motion.button
+                  onMouseEnter={() => setScheduleHover(true)}
+                  onMouseLeave={() => setScheduleHover(false)}
+                  className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
+                >
+                  <div className="inline-block">
+                    <div className="mb-1">schedule a call</div>
+                    {scheduleHover && <Emphasis className="relative" />}
+                  </div>
+                </motion.button>
+                <motion.button
+                  onMouseEnter={() => setLinkedinHover(true)}
+                  onMouseLeave={() => setLinkedinHover(false)}
+                  className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
+                >
+                  <div className="inline-block">
+                    <div className="mb-1">connect on linkedin</div>
+                    {linkedinHover && <Emphasis className="relative" />}
+                  </div>
+                </motion.button>
+              </motion.div>
             </div>
           </div>
         </div>

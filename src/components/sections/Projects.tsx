@@ -204,7 +204,6 @@ export default function Projects() {
                         autoPlay
                         loop
                         muted
-                        controls
                         playsInline
                       />
                     ) : project.image ? (

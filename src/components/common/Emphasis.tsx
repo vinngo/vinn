@@ -10,7 +10,7 @@ export default function Emphasis({
   className = "",
   transition,
 }: EmphasisProps) {
-  const defaultClasses = "absolute bottom-0 left-0 right-0 h-0.5 bg-primary";
+  const defaultClasses = "absolute bottom-0 left-0 right-0 h-px bg-primary";
   const combinedClasses = className
     ? `${defaultClasses} ${className}`
     : defaultClasses;
