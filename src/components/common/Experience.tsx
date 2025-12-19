@@ -45,14 +45,14 @@ export default function ExperienceComponent({ experience }: ExperienceProps) {
         <AnimatePresence>
           {hovered && (
             <motion.div
-              className="bg-card rounded-sm shadow-2xl transition-shadow"
+              className="border-l shadow-2xl transition-shadow"
               style={{ transformOrigin: "top" }}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.2 }}
             >
-              <div className="p-2 font-extralight text-sm font-sans">
+              <div className="p-3 font-extralight text-sm font-sans">
                 <div className="text-foreground">{experience.description}</div>
                 <br />
                 <div className="text-foreground">
