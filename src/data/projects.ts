@@ -83,8 +83,7 @@ export const projects: Project[] = [
   {
     id: "vinchan",
     title: "vinchan",
-    description:
-      "A novelty discord music bot. It's only objective is to be annoying.",
+    description: "A novelty discord music bot.",
     technologies: ["Express.js", "Firebase"],
     category: "web",
     complexity: "beginner",

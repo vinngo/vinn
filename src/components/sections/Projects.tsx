@@ -15,6 +15,7 @@ export default function Projects() {
     useState<ComplexityFilter>("all");
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
   const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
+  const [clearFilterHover, setClearFilterHover] = useState(false);
 
   const categories = [
     { id: "all" as FilterType, label: "All Projects" },
@@ -330,19 +331,27 @@ export default function Projects() {
           {/* No Results */}
           {filteredProjects.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">
+              <p
+                className="text-muted-foreground text-lg"
+                style={{ fontFamily: "Lora" }}
+              >
                 No projects found matching your criteria.
               </p>
-              <button
+              <motion.button
                 onClick={() => {
                   setSelectedCategory("all");
                   setSelectedComplexity("all");
                   setShowFeaturedOnly(false);
                 }}
-                className="mt-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                onMouseEnter={() => setClearFilterHover(true)}
+                onMouseLeave={() => setClearFilterHover(false)}
+                className="mt-2 text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
               >
-                Clear Filters
-              </button>
+                <div className="inline-block">
+                  Clear Filters
+                  {clearFilterHover && <Emphasis className="relative" />}
+                </div>
+              </motion.button>
             </div>
           )}
         </div>

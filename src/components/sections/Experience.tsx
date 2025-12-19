@@ -82,10 +82,7 @@ export default function Experience() {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               {experiences.map((experience, index) => (
-                <div
-                  key={index}
-                  className="relative flex items-start pb-5 border-b"
-                >
+                <div key={index} className="relative items-start pb-5 border-b">
                   <ExperienceComponent experience={experience} />
                 </div>
               ))}
@@ -155,7 +152,12 @@ export default function Experience() {
                   className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
                 >
                   <div className="inline-block">
-                    <div className="mb-1">schedule a call</div>
+                    <a
+                      href="https://calendly.com/ngovincent9593/30min"
+                      className="mb-1"
+                    >
+                      schedule a call
+                    </a>
                     {scheduleHover && <Emphasis className="relative" />}
                   </div>
                 </motion.button>
@@ -165,7 +167,12 @@ export default function Experience() {
                   className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
                 >
                   <div className="inline-block">
-                    <div className="mb-1">connect on linkedin</div>
+                    <a
+                      href="https://www.linkedin.com/in/vinngo/"
+                      className="mb-1"
+                    >
+                      connect on linkedin
+                    </a>
                     {linkedinHover && <Emphasis className="relative" />}
                   </div>
                 </motion.button>

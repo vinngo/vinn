@@ -15,7 +15,7 @@ export default function ExperienceComponent({ experience }: ExperienceProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="flex w-full items-center gap-2 mb-5 font-light ">
+      <div className="flex w-full gap-2 mb-5 font-light justify-between items-start">
         <motion.div
           className="text-2xl"
           style={{
@@ -30,26 +30,16 @@ export default function ExperienceComponent({ experience }: ExperienceProps) {
             <div className="relative mb-2">{experience.title}</div>
           </div>
         </motion.div>
-        <motion.div
-          className="flex items-center gap-2"
-          initial={{ flex: "0 1 0%" }}
-          animate={{ flex: hovered ? "1 1 0%" : "0 1 0%" }}
-          transition={{ duration: 0.6 }}
-        >
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            className="h-px w-full bg-muted-foreground"
-          />
+        <div className="flex items-center gap-2 ml-auto text-right">
           <div
-            className="pl-3 flex-col flex text-lg text-muted-foreground font-light whitespace-nowrap"
+            className="pl-3 flex-col flex text-lg text-muted-foreground font-light whitespace-nowrap text-right"
             style={{ fontFamily: "Lora" }}
           >
             {experience.period}
             <br />
             {experience.location}
           </div>
-        </motion.div>
+        </div>
       </div>
       <div className="overflow-hidden">
         <AnimatePresence>
