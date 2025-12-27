@@ -54,6 +54,18 @@ export const projects: Project[] = [
     status: "completed",
   },
   {
+    id: "fabula",
+    title: "fabula",
+    description: "A UI component registry distributed using shadcn",
+    technologies: ["Next.JS", "TailwindCSS", "Framer Motion", "shadcn"],
+    category: "web",
+    complexity: "intermediate",
+    demoUrl: "https://fabula-one.vercel.app",
+    githubUrl: "https://github.com/vinngo/fabula",
+    featured: true,
+    status: "completed",
+  },
+  {
     id: "twmnd",
     title: "twmnd",
     description: "An AI meeting assistant tech demo.",
