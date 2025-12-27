@@ -14,7 +14,7 @@ export default function Hero() {
                 style={{ fontFamily: "Lora, serif" }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
                 Vincent Ngo
               </motion.h1>
@@ -24,7 +24,7 @@ export default function Hero() {
               style={{ fontFamily: "Lora, serif" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
             >
               CS @ UCSC & Full-Stack Developer
             </motion.p>
@@ -34,7 +34,7 @@ export default function Hero() {
               style={{ fontFamily: "Lora, serif" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
             >
               Meticulous full-stack builder, combining form and function to
               inspire users.
