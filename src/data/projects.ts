@@ -66,7 +66,7 @@ export const projects: Project[] = [
     demoUrl: "https://fabula-one.vercel.app",
     githubUrl: "https://github.com/vinngo/fabula",
     featured: true,
-    status: "completed",
+    status: "in-progress",
   },
   {
     id: "twmnd",
