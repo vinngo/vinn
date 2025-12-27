@@ -56,10 +56,13 @@ export const projects: Project[] = [
   {
     id: "fabula",
     title: "fabula",
-    description: "A UI component registry distributed using shadcn",
+    description:
+      "An opinionated UI component registry distributed using shadcn",
     technologies: ["Next.JS", "TailwindCSS", "Framer Motion", "shadcn"],
     category: "web",
     complexity: "intermediate",
+    video:
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/fabula-demo.mp4",
     demoUrl: "https://fabula-one.vercel.app",
     githubUrl: "https://github.com/vinngo/fabula",
     featured: true,
