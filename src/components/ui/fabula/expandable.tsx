@@ -13,13 +13,43 @@ interface ExpandableProps {
 
 function Expandable({ trigger, children, className }: ExpandableProps) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // 768px is Tailwind's md breakpoint
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  const handleClick = () => {
+    if (isMobile) {
+      setIsOpen((prev) => !prev);
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsOpen(false);
+    }
+  };
 
   return (
     <ExpandableContext.Provider value={{ isOpen, setIsOpen }}>
       <div
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        className={cn("", className)}
+        onClick={handleClick}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={cn(isMobile ? "cursor-pointer" : "", className)}
       >
         {trigger}
         {children}

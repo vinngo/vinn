@@ -2,6 +2,7 @@ import type { Experience } from "../sections/Experience";
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
 import Emphasis from "./Emphasis";
+import { motion } from "framer-motion";
 
 type ExperienceProps = {
   experience: Experience;
@@ -27,14 +28,15 @@ function ExperienceTrigger({ experience }: ExperienceProps) {
         </div>
       </div>
       <div className="flex items-center gap-2 ml-auto text-right">
-        <div
+        <motion.div
           className="pl-3 flex-col flex text-lg text-muted-foreground font-light whitespace-nowrap text-right"
           style={{ fontFamily: "Lora" }}
+          animate={{ opacity: isOpen ? 1 : 0.2 }}
         >
           {experience.period}
           <br />
           {experience.location}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
@@ -45,8 +47,12 @@ export default function ExperienceComponent({ experience }: ExperienceProps) {
     <Expandable trigger={<ExperienceTrigger experience={experience} />}>
       <ExpandableContent className="font-extralight text-sm font-sans">
         <div className="p-3">
+          <div className="text-muted-foreground font-mono mb-px">summary:</div>
           <div className="text-foreground">{experience.description}</div>
           <br />
+          <div className="text-muted-foreground font-mono mb-px">
+            highlights:{" "}
+          </div>
           <div className="text-foreground">
             {experience.highlights.map((highlight, index) => (
               <div key={index}>{highlight}</div>
