@@ -15,6 +15,21 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "socratical",
+    title: "Socratical",
+    description:
+      "A whiteboard that teaches students tough concepts through Socratic guidance. Won at CruzHacks 26",
+    technologies: ["Next.JS", "tldraw", "Vercel AI SDK", "Vercel Functions"],
+    category: "web",
+    complexity: "intermediate",
+    video:
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/socratical video demo.mp4",
+    featured: true,
+    status: "completed",
+    demoUrl: "https://cruzhacks-seven.vercel.app",
+    githubUrl: "https://github.com/vinngo/cruzhacks",
+  },
+  {
     id: "codecompass",
     title: "CodeCompass",
     description:
@@ -69,18 +84,6 @@ export const projects: Project[] = [
     status: "in-progress",
   },
   {
-    id: "twmnd",
-    title: "twmnd",
-    description: "An AI meeting assistant tech demo.",
-    technologies: ["Next.JS", "PostgreSQL", "S3", "Lambda"],
-    category: "web",
-    complexity: "advanced",
-    demoUrl: "https://twmnd.vercel.app",
-    githubUrl: "https://github.com/vinngo/twmnd",
-    featured: false,
-    status: "completed",
-  },
-  {
     id: "accountable",
     title: "Accountable",
     description:
@@ -92,18 +95,6 @@ export const projects: Project[] = [
       "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/accountable-demo.mp4",
     demoUrl: "https://github.com/vinngo/accountable",
     githubUrl: "https://github.com/vinngo/accountable",
-    featured: false,
-    status: "completed",
-  },
-  {
-    id: "vinchan",
-    title: "vinchan",
-    description: "A novelty discord music bot.",
-    technologies: ["Express.js", "Firebase"],
-    category: "web",
-    complexity: "beginner",
-    demoUrl: "https://github.com/vinngo/vinchan",
-    githubUrl: "https://github.com/vinngo/vinchan",
     featured: false,
     status: "completed",
   },
