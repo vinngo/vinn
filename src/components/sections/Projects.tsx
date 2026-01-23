@@ -5,16 +5,172 @@ import { motion } from "framer-motion";
 import Emphasis from "../common/Emphasis";
 import TechnologyCarousel from "../common/TechnologyCarousel";
 import SectionTitle from "../common/SectionTitle";
+import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
+import { useExpandable } from "../ui/fabula/expandable-context";
 
 type FilterType = "all" | "web" | "mobile" | "desktop" | "ai";
 type ComplexityFilter = "all" | "beginner" | "intermediate" | "advanced";
+
+type ProjectCardProps = {
+  project: Project;
+  getStatusColor: (status: Project["status"]) => string;
+  getComplexityColor: (complexity: Project["complexity"]) => string;
+};
+
+function ProjectCardTrigger({
+  project,
+  getStatusColor,
+  getComplexityColor,
+}: ProjectCardProps) {
+  const { isOpen } = useExpandable();
+
+  return (
+    <div>
+      {/* Project Video or Image */}
+      <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
+        {project.video ? (
+          <video
+            src={project.video}
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-4xl">
+            {project.category === "web"
+              ? "🌐"
+              : project.category === "mobile"
+                ? "📱"
+                : project.category === "ai"
+                  ? "🤖"
+                  : "💻"}
+          </span>
+        )}
+      </div>
+
+      <div className="p-6">
+        {/* Project Header */}
+        <div className="flex items-start justify-between mb-3">
+          <div className="relative">
+            <h3
+              className="text-xl font-light text-foreground line-clamp-2 pb-1"
+              style={{
+                fontFamily: "Lora",
+              }}
+            >
+              {project.title}
+            </h3>
+            {isOpen && <Emphasis />}
+          </div>
+          {project.featured && (
+            <span className="px-2 py-1 text-foreground text-xs rounded-full shrink-0 ml-2">
+              Featured
+            </span>
+          )}
+        </div>
+
+        {/* Status and Complexity */}
+        <div className="flex gap-2 mb-3">
+          <span
+            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
+            style={{
+              fontFamily: "sans-serif",
+            }}
+          >
+            {project.status.charAt(0).toUpperCase() +
+              project.status.slice(1).replace("-", " ")}
+          </span>
+          <span
+            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
+            style={{
+              fontFamily: "sans-serif",
+            }}
+          >
+            {project.complexity.charAt(0).toUpperCase() +
+              project.complexity.slice(1)}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({
+  project,
+  getStatusColor,
+  getComplexityColor,
+}: ProjectCardProps) {
+  return (
+    <div className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow">
+      <Expandable
+        trigger={
+          <ProjectCardTrigger
+            project={project}
+            getStatusColor={getStatusColor}
+            getComplexityColor={getComplexityColor}
+          />
+        }
+      >
+        <ExpandableContent className="px-6 pb-6">
+          {/* Description */}
+          <p className="text-muted-foreground font-extralight text-sm mb-4">
+            {project.description}
+          </p>
+
+          {/* Technologies */}
+          <div className="mb-4">
+            <TechnologyCarousel
+              technologies={project.technologies}
+              isHovered={false}
+            />
+          </div>
+
+          {/* Links */}
+          <div className="flex gap-3 pb-6">
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
+              >
+                <ExternalLink className="h-4 w-4" />
+                <span className="font-light">Demo</span>
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
+              >
+                <Github className="h-4 w-4" />
+                <span className="font-light">Code</span>
+              </a>
+            )}
+          </div>
+        </ExpandableContent>
+      </Expandable>
+    </div>
+  );
+}
 
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<FilterType>("all");
   const [selectedComplexity, setSelectedComplexity] =
     useState<ComplexityFilter>("all");
   const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
-  const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
   const [clearFilterHover, setClearFilterHover] = useState(false);
 
   const categories = [
@@ -186,144 +342,14 @@ export default function Projects() {
             </div>
 
             {/* Projects Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="px-40 py-10 grid grid-cols-2 gap-8 items-start">
               {filteredProjects.map((project) => (
-                <motion.div
+                <ProjectCard
                   key={project.id}
-                  className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", duration: 0.3 }}
-                  onMouseEnter={() => setHoveredProjectId(project.id)}
-                  onMouseLeave={() => setHoveredProjectId(null)}
-                >
-                  {/* Project Video or Image */}
-                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
-                    {project.video ? (
-                      <video
-                        src={project.video}
-                        className="w-full h-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                      />
-                    ) : project.image ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-4xl">
-                        {project.category === "web"
-                          ? "🌐"
-                          : project.category === "mobile"
-                            ? "📱"
-                            : project.category === "ai"
-                              ? "🤖"
-                              : "💻"}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="p-6">
-                    {/* Project Header */}
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="relative">
-                        <h3
-                          className="text-xl font-light text-foreground line-clamp-2 pb-1"
-                          style={{
-                            fontFamily: "Lora",
-                          }}
-                        >
-                          {project.title}
-                        </h3>
-                        {hoveredProjectId === project.id && <Emphasis />}
-                      </div>
-                      {project.featured && (
-                        <span className="px-2 py-1 text-foreground text-xs rounded-full shrink-0 ml-2">
-                          Featured
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Status and Complexity */}
-                    <div className="flex gap-2 mb-3">
-                      <span
-                        className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
-                        style={{
-                          fontFamily: "sans-serif",
-                        }}
-                      >
-                        {project.status.charAt(0).toUpperCase() +
-                          project.status.slice(1).replace("-", " ")}
-                      </span>
-                      <span
-                        className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
-                        style={{
-                          fontFamily: "sans-serif",
-                        }}
-                      >
-                        {project.complexity.charAt(0).toUpperCase() +
-                          project.complexity.slice(1)}
-                      </span>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground font-extralight text-sm mb-4 line-clamp-3">
-                      {project.description}
-                    </p>
-
-                    {/* Technologies */}
-                    <div className="mb-4">
-                      {project.technologies.length > 3 ? (
-                        <TechnologyCarousel
-                          technologies={project.technologies}
-                          isHovered={hoveredProjectId === project.id}
-                        />
-                      ) : (
-                        <div className="flex flex-wrap gap-1">
-                          {project.technologies.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="px-2 py-1 bg-muted text-muted-foreground font-mono text-xs rounded whitespace-nowrap"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Links */}
-                    <div className="flex gap-3">
-                      {project.demoUrl && (
-                        <a
-                          href={project.demoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
-                        >
-                          <ExternalLink className="h-4 w-4" />
-                          <span className="font-light">Demo</span>
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
-                        >
-                          <Github className="h-4 w-4" />
-                          <span className="font-light">Code</span>
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
+                  project={project}
+                  getStatusColor={getStatusColor}
+                  getComplexityColor={getComplexityColor}
+                />
               ))}
             </div>
           </motion.div>
