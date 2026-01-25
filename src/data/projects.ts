@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: "socratical",
     title: "Socratical",
     description:
-      "A whiteboard that teaches students tough concepts through Socratic guidance. Won at CruzHacks 26",
+      "A whiteboard that teaches students tough concepts through Socratic guidance. Best Use of Vercel at Cruzhacks 2026.",
     technologies: ["Next.JS", "tldraw", "Vercel AI SDK", "Vercel Functions"],
     category: "web",
     complexity: "intermediate",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     featured: true,
     status: "completed",
     demoUrl: "https://cruzhacks-seven.vercel.app",
-    githubUrl: "https://github.com/vinngo/cruzhacks",
+    githubUrl: "https://github.com/vinngo/socratical",
   },
   {
     id: "codecompass",
