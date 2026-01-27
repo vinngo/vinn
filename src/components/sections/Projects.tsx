@@ -7,6 +7,7 @@ import TechnologyCarousel from "../common/TechnologyCarousel";
 import SectionTitle from "../common/SectionTitle";
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 type FilterType = "all" | "web" | "mobile" | "desktop" | "ai";
 type ComplexityFilter = "all" | "beginner" | "intermediate" | "advanced";
@@ -103,6 +104,113 @@ function ProjectCardTrigger({
   );
 }
 
+function MobileProjectCard({
+  project,
+  getStatusColor,
+  getComplexityColor,
+}: ProjectCardProps) {
+  return (
+    <div className="bg-card rounded-lg border border-border overflow-hidden">
+      {/* Video/Image */}
+      <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
+        {project.video ? (
+          <video
+            src={project.video}
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        ) : project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <span className="text-4xl">
+            {project.category === "web"
+              ? "🌐"
+              : project.category === "mobile"
+                ? "📱"
+                : project.category === "ai"
+                  ? "🤖"
+                  : "💻"}
+          </span>
+        )}
+      </div>
+
+      <div className="p-4">
+        {/* Title */}
+        <h3
+          className="text-lg font-light text-foreground mb-2"
+          style={{ fontFamily: "Lora" }}
+        >
+          {project.title}
+        </h3>
+
+        {/* Status and Complexity */}
+        <div className="flex gap-2 mb-3">
+          <span
+            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
+            style={{ fontFamily: "sans-serif" }}
+          >
+            {project.status.charAt(0).toUpperCase() +
+              project.status.slice(1).replace("-", " ")}
+          </span>
+          <span
+            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
+            style={{ fontFamily: "sans-serif" }}
+          >
+            {project.complexity.charAt(0).toUpperCase() +
+              project.complexity.slice(1)}
+          </span>
+        </div>
+
+        {/* Description */}
+        <p className="text-muted-foreground font-extralight text-sm mb-3">
+          {project.description}
+        </p>
+
+        {/* Technologies */}
+        <div className="mb-3">
+          <TechnologyCarousel
+            technologies={project.technologies}
+            isHovered={false}
+          />
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-3">
+          {project.demoUrl && (
+            <a
+              href={project.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
+            >
+              <ExternalLink className="h-4 w-4" />
+              <span className="font-light">Demo</span>
+            </a>
+          )}
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 text-primary hover:text-primary/80 text-sm font-light"
+            >
+              <Github className="h-4 w-4" />
+              <span className="font-light">Code</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ProjectCard({
   project,
   getStatusColor,
@@ -167,6 +275,7 @@ function ProjectCard({
 }
 
 export default function Projects() {
+  const isMobile = useMediaQuery("(max-width: 640px)");
   const [selectedCategory, setSelectedCategory] = useState<FilterType>("all");
   const [selectedComplexity, setSelectedComplexity] =
     useState<ComplexityFilter>("all");
@@ -342,15 +451,24 @@ export default function Projects() {
             </div>
 
             {/* Projects Grid */}
-            <div className="px-40 py-10 grid grid-cols-2 gap-8 items-start">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  getStatusColor={getStatusColor}
-                  getComplexityColor={getComplexityColor}
-                />
-              ))}
+            <div className="px-0 sm:px-40 py-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
+              {filteredProjects.map((project) =>
+                isMobile ? (
+                  <MobileProjectCard
+                    key={project.id}
+                    project={project}
+                    getStatusColor={getStatusColor}
+                    getComplexityColor={getComplexityColor}
+                  />
+                ) : (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    getStatusColor={getStatusColor}
+                    getComplexityColor={getComplexityColor}
+                  />
+                ),
+              )}
             </div>
           </motion.div>
 
