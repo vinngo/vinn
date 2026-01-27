@@ -1,17 +1,16 @@
 import type { Experience } from "../sections/Experience";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-/*
+
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
 import Emphasis from "./Emphasis";
 import { motion } from "framer-motion";
-*/
 
 type ExperienceProps = {
   experience: Experience;
 };
 
-/*function ExperienceTrigger({ experience }: ExperienceProps) {
+function ExperienceTrigger({ experience }: ExperienceProps) {
   const { isOpen } = useExpandable();
 
   return (
@@ -43,7 +42,7 @@ type ExperienceProps = {
       </div>
     </div>
   );
-}*/
+}
 
 function MobileExperience({ experience }: ExperienceProps) {
   return (
@@ -74,5 +73,23 @@ export default function ExperienceComponent({ experience }: ExperienceProps) {
     return <MobileExperience experience={experience} />;
   }
 
-  return <MobileExperience experience={experience} />;
+  return (
+    <Expandable trigger={<ExperienceTrigger experience={experience} />}>
+      <ExpandableContent className="font-extralight text-sm font-sans">
+        <div className="p-3">
+          <div className="text-muted-foreground font-mono mb-px">summary:</div>
+          <div className="text-foreground">{experience.description}</div>
+          <br />
+          <div className="text-muted-foreground font-mono mb-px">
+            highlights:{" "}
+          </div>
+          <div className="text-foreground">
+            {experience.highlights.map((highlight, index) => (
+              <div key={index}>{highlight}</div>
+            ))}
+          </div>
+        </div>
+      </ExpandableContent>
+    </Expandable>
+  );
 }
