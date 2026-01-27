@@ -1,6 +1,7 @@
 import type { Experience } from "../sections/Experience";
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import Emphasis from "./Emphasis";
 import { motion } from "framer-motion";
 
@@ -42,7 +43,35 @@ function ExperienceTrigger({ experience }: ExperienceProps) {
   );
 }
 
+function MobileExperience({ experience }: ExperienceProps) {
+  return (
+    <div className="font-light">
+      <div style={{ fontFamily: "Lora" }}>
+        <div className="text-xl mb-1">{experience.organization}</div>
+        <div className="font-mono text-sm text-muted-foreground mb-1">
+          {experience.title}
+        </div>
+        <div
+          className="text-sm text-muted-foreground mb-3"
+          style={{ fontFamily: "Lora" }}
+        >
+          {experience.period} &middot; {experience.location}
+        </div>
+      </div>
+      <div className="font-extralight text-sm font-sans">
+        <div className="text-foreground">{experience.description}</div>
+      </div>
+    </div>
+  );
+}
+
 export default function ExperienceComponent({ experience }: ExperienceProps) {
+  const isMobile = useMediaQuery("(max-width: 640px)");
+
+  if (isMobile) {
+    return <MobileExperience experience={experience} />;
+  }
+
   return (
     <Expandable trigger={<ExperienceTrigger experience={experience} />}>
       <ExpandableContent className="font-extralight text-sm font-sans">
