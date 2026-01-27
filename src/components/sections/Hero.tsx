@@ -36,8 +36,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
             >
-              Meticulous full-stack builder, combining form and function to
-              inspire users.
+              Meticulous full-stack builder. Currently building tools that
+              empower users.
             </motion.p>
           </div>
 
