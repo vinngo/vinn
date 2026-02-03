@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <section id="hero" className="flex items-center justify-left bg-background">
-      <div className="container mx-auto pt-50 px-50 text-left">
+      <div className="container mx-auto pt-50 text-left px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="max-w-4xl mx-auto">
           {/* Main content */}
           <div className="mb-8 mx-auto">
