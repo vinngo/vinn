@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <section id="hero" className="flex items-center justify-left bg-background">
-      <div className="container mx-auto pt-50 px-4 sm:px-6 lg:px-8 text-left">
+      <div className="container mx-auto pt-50 px-50 text-left">
         <div className="max-w-4xl mx-auto">
           {/* Main content */}
           <div className="mb-8 mx-auto">
@@ -24,7 +24,7 @@ export default function Hero() {
               style={{ fontFamily: "Lora, serif" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
               CS @ UCSC & Full-Stack Developer
             </motion.p>
@@ -34,7 +34,7 @@ export default function Hero() {
               style={{ fontFamily: "Lora, serif" }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.0, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             >
               Meticulous full-stack builder. Currently building tools that
               empower users.
@@ -46,7 +46,7 @@ export default function Hero() {
             className="flex justify-left space-x-6 mb-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
           >
             <a
               href="https://github.com/vinngo/"

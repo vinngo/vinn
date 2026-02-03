@@ -3,7 +3,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { projects, type Project } from "../../data/projects";
 import { motion } from "framer-motion";
 import Emphasis from "../common/Emphasis";
-import TechnologyCarousel from "../common/TechnologyCarousel";
+import { TechCarousel } from "../common/TechnologyCarousel";
 import SectionTitle from "../common/SectionTitle";
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
@@ -175,10 +175,7 @@ function MobileProjectCard({
 
         {/* Technologies */}
         <div className="mb-3">
-          <TechnologyCarousel
-            technologies={project.technologies}
-            isHovered={false}
-          />
+          <TechCarousel technologies={project.technologies} />
         </div>
 
         {/* Links */}
@@ -235,10 +232,7 @@ function ProjectCard({
 
           {/* Technologies */}
           <div className="mb-4">
-            <TechnologyCarousel
-              technologies={project.technologies}
-              isHovered={false}
-            />
+            <TechCarousel technologies={project.technologies} />
           </div>
 
           {/* Links */}
