@@ -39,8 +39,9 @@ export const projects: Project[] = [
     complexity: "intermediate",
     video: "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/cairo-demo.mp4",
     featured: false,
-    status: "in-progress",
-    githubUrl: "https://github.com/vinngo/sbhacks ",
+    status: "completed",
+    demoUrl: "https://sbhacks-gilt.vercel.app",
+    githubUrl: "https://github.com/vinngo/kairo",
   },
   {
     id: "codecompass",
