@@ -15,6 +15,21 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "agentmancy",
+    title: "agentmancy",
+    description:
+      "A meta-prompting framework that improves performance of your favorite coding agents by generating custom agents and skills.",
+    technologies: ["Claude Code", "OpenCode", "Gemini CLI", "npm"],
+    category: "ai",
+    complexity: "intermediate",
+    video:
+      "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/agentmancy-demo-2.mp4",
+    featured: false,
+    status: "in-progress",
+    demoUrl: "https://www.npmjs.com/package/agentmancy?activeTab=readme",
+    githubUrl: "https://github.com/vinngo/agentmancy",
+  },
+  {
     id: "socratical",
     title: "Socratical",
     description:
