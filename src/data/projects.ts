@@ -18,7 +18,7 @@ export const projects: Project[] = [
     id: "agentmancy",
     title: "agentmancy",
     description:
-      "A meta-prompting framework that improves performance of your favorite coding agents by generating custom agents and skills.",
+      "A meta-prompting framework that improves performance of your favorite coding agents by generating custom agents and skills. 200 weekly downloads on npm.",
     technologies: ["Claude Code", "OpenCode", "Gemini CLI", "npm"],
     category: "ai",
     complexity: "intermediate",
