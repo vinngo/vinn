@@ -18,11 +18,7 @@ type ProjectCardProps = {
   getComplexityColor: (complexity: Project["complexity"]) => string;
 };
 
-function ProjectCardTrigger({
-  project,
-  getStatusColor,
-  getComplexityColor,
-}: ProjectCardProps) {
+function ProjectCardTrigger({ project }: ProjectCardProps) {
   const { isOpen } = useExpandable();
 
   return (
@@ -59,7 +55,7 @@ function ProjectCardTrigger({
 
       <div className="p-6">
         {/* Project Header */}
-        <div className="flex items-start justify-between mb-3">
+        <div className="flex items-start justify-between">
           <div className="relative">
             <h3
               className="text-xl font-light text-foreground line-clamp-2 pb-1"
@@ -77,38 +73,12 @@ function ProjectCardTrigger({
             </span>
           )}
         </div>
-
-        {/* Status and Complexity */}
-        <div className="flex gap-2 mb-3">
-          <span
-            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
-            style={{
-              fontFamily: "sans-serif",
-            }}
-          >
-            {project.status.charAt(0).toUpperCase() +
-              project.status.slice(1).replace("-", " ")}
-          </span>
-          <span
-            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
-            style={{
-              fontFamily: "sans-serif",
-            }}
-          >
-            {project.complexity.charAt(0).toUpperCase() +
-              project.complexity.slice(1)}
-          </span>
-        </div>
       </div>
     </div>
   );
 }
 
-function MobileProjectCard({
-  project,
-  getStatusColor,
-  getComplexityColor,
-}: ProjectCardProps) {
+function MobileProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="bg-card rounded-lg border border-border overflow-hidden">
       {/* Video/Image */}
@@ -149,24 +119,6 @@ function MobileProjectCard({
         >
           {project.title}
         </h3>
-
-        {/* Status and Complexity */}
-        <div className="flex gap-2 mb-3">
-          <span
-            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getStatusColor(project.status)}`}
-            style={{ fontFamily: "sans-serif" }}
-          >
-            {project.status.charAt(0).toUpperCase() +
-              project.status.slice(1).replace("-", " ")}
-          </span>
-          <span
-            className={`px-2 py-0.5 text-xs font-extralight rounded-md ${getComplexityColor(project.complexity)}`}
-            style={{ fontFamily: "sans-serif" }}
-          >
-            {project.complexity.charAt(0).toUpperCase() +
-              project.complexity.slice(1)}
-          </span>
-        </div>
 
         {/* Description */}
         <p className="text-muted-foreground font-extralight text-sm mb-3">

@@ -115,8 +115,7 @@ export const projects: Project[] = [
   {
     id: "accountable",
     title: "Accountable",
-    description:
-      "A twist on social networking apps with a focus on unwavering discipline",
+    description: "A social networking app that encourages discipline",
     technologies: ["React Native", "Twilio", "Supabase", "S3"],
     category: "mobile",
     complexity: "intermediate",
