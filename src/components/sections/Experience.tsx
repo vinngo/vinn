@@ -58,6 +58,16 @@ const experiences: Experience[] = [
     ],
     current: true,
   },
+  {
+    type: "work",
+    title: "Software Development Engineer Intern",
+    organization: "Amazon Web Services (AWS)",
+    location: "Seattle, WA",
+    period: "Summer 2026",
+    description: "Incoming",
+    highlights: [`Coming Soon!`],
+    current: true,
+  },
 ];
 
 export default function Experience() {
