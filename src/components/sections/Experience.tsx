@@ -93,52 +93,6 @@ export default function Experience() {
               ))}
             </motion.div>
           </div>
-          {/* Certifications */}
-          <div className="mt-20">
-            {/*
-            <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-foreground mb-4">
-                Certifications & Achievements
-              </h3>
-              <p className="text-muted-foreground">
-                Professional certifications that validate my technical expertise
-              </p>
-            </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {certifications.map((cert, index) => (
-                  <div
-                    key={index}
-                    className="bg-card rounded-lg border border-border p-6 text-center hover:shadow-lg transition-shadow"
-                  >
-                    <div className="flex justify-center mb-4">
-                      <div className="p-3 bg-accent/10 text-accent rounded-full">
-                        <Award className="h-6 w-6" />
-                      </div>
-                    </div>
-
-                    <h4 className="font-semibold text-foreground mb-2">
-                      {cert.title}
-                    </h4>
-
-                    <p className="text-muted-foreground text-sm mb-2">
-                      {cert.issuer}
-                    </p>
-
-                    <p className="text-muted-foreground text-xs mb-4">
-                      Issued: {cert.date}
-                    </p>
-
-                    <a
-                      href={cert.credentialUrl}
-                      className="text-primary hover:text-primary/80 text-sm font-medium"
-                    >
-                      View Credential
-                    </a>
-                  </div>
-                ))}
-              </div>
-              */}
-          </div>
         </div>
       </div>
     </section>
