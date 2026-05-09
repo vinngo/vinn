@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { projects, type Project } from "../../data/projects";
 import { motion } from "framer-motion";
@@ -9,13 +8,8 @@ import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-type FilterType = "all" | "web" | "mobile" | "desktop" | "ai";
-type ComplexityFilter = "all" | "beginner" | "intermediate" | "advanced";
-
 type ProjectCardProps = {
   project: Project;
-  getStatusColor: (status: Project["status"]) => string;
-  getComplexityColor: (complexity: Project["complexity"]) => string;
 };
 
 function ProjectCardTrigger({ project }: ProjectCardProps) {
@@ -160,21 +154,11 @@ function MobileProjectCard({ project }: ProjectCardProps) {
   );
 }
 
-function ProjectCard({
-  project,
-  getStatusColor,
-  getComplexityColor,
-}: ProjectCardProps) {
+function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow">
       <Expandable
-        trigger={
-          <ProjectCardTrigger
-            project={project}
-            getStatusColor={getStatusColor}
-            getComplexityColor={getComplexityColor}
-          />
-        }
+        trigger={<ProjectCardTrigger project={project} />}
       >
         <ExpandableContent className="px-6 pb-6">
           {/* Description */}
@@ -222,60 +206,6 @@ function ProjectCard({
 
 export default function Projects() {
   const isMobile = useMediaQuery("(max-width: 640px)");
-  const [selectedCategory, setSelectedCategory] = useState<FilterType>("all");
-  const [selectedComplexity, setSelectedComplexity] =
-    useState<ComplexityFilter>("all");
-  const [showFeaturedOnly, setShowFeaturedOnly] = useState(false);
-  const [clearFilterHover, setClearFilterHover] = useState(false);
-
-  const categories = [
-    { id: "all" as FilterType, label: "All Projects" },
-    { id: "web" as FilterType, label: "Web Apps" },
-    { id: "mobile" as FilterType, label: "Mobile Apps" },
-  ];
-
-  const complexityLevels = [
-    { id: "all" as ComplexityFilter, label: "All Levels" },
-    { id: "beginner" as ComplexityFilter, label: "Beginner" },
-    { id: "intermediate" as ComplexityFilter, label: "Intermediate" },
-    { id: "advanced" as ComplexityFilter, label: "Advanced" },
-  ];
-
-  const filteredProjects = projects.filter((project) => {
-    const categoryMatch =
-      selectedCategory === "all" || project.category === selectedCategory;
-    const complexityMatch =
-      selectedComplexity === "all" || project.complexity === selectedComplexity;
-    const featuredMatch = !showFeaturedOnly || project.featured;
-
-    return categoryMatch && complexityMatch && featuredMatch;
-  });
-
-  const getStatusColor = (status: Project["status"]) => {
-    switch (status) {
-      case "completed":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
-      case "in-progress":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
-      case "planning":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
-      default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
-    }
-  };
-
-  const getComplexityColor = (complexity: Project["complexity"]) => {
-    switch (complexity) {
-      case "beginner":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
-      case "intermediate":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
-      case "advanced":
-        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
-      default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
-    }
-  };
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -291,159 +221,17 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            {/* Filters */}
-            <div className="mb-12">
-              <div className="flex flex-wrap gap-4 justify-center items-center">
-                {/* Category Filter */}
-                <div className="flex items-center gap-2">
-                  <span
-                    className="text-sm font-medium text-muted-foreground"
-                    style={{
-                      fontFamily: "Lora",
-                    }}
-                  >
-                    Category:
-                  </span>
-                  <div className="flex gap-2 relative">
-                    {categories.map((category) => (
-                      <button
-                        key={category.id}
-                        onClick={() => setSelectedCategory(category.id)}
-                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${
-                          selectedCategory === category.id
-                            ? "text-foreground"
-                            : "text-muted-foreground hover:cursor-pointer"
-                        }`}
-                        style={{
-                          fontFamily: "Lora",
-                        }}
-                      >
-                        {category.label}
-                        {selectedCategory === category.id && (
-                          <motion.div
-                            layoutId="categoryIndicator"
-                            className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary"
-                            initial={false}
-                            transition={{
-                              stiffness: 500,
-                              damping: 30,
-                            }}
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="h-8 w-px bg-border"></div>
-
-                {/* Complexity Filter */}
-                <div
-                  className="flex items-center gap-2"
-                  style={{
-                    fontFamily: "Lora",
-                  }}
-                >
-                  <span className="text-sm font-medium text-muted-foreground">
-                    Level:
-                  </span>
-                  <div className="flex gap-2 relative">
-                    {complexityLevels.map((level) => (
-                      <button
-                        key={level.id}
-                        onClick={() => setSelectedComplexity(level.id)}
-                        className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors relative ${
-                          selectedComplexity === level.id
-                            ? "text-foreground"
-                            : "text-muted-foreground hover:cursor-pointer"
-                        }`}
-                      >
-                        {level.label}
-                        {selectedComplexity === level.id && (
-                          <motion.div
-                            layoutId="complexityIndicator"
-                            className="absolute bottom-0 left-3 right-3 h-0.5 bg-primary"
-                            initial={false}
-                            transition={{
-                              stiffness: 500,
-                              damping: 30,
-                            }}
-                          />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Featured Toggle */}
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={showFeaturedOnly}
-                    onChange={(e) => setShowFeaturedOnly(e.target.checked)}
-                    className="rounded border-border"
-                  />
-                  <span
-                    className="text-sm font-medium text-muted-foreground"
-                    style={{
-                      fontFamily: "Lora",
-                    }}
-                  >
-                    Featured only
-                  </span>
-                </label>
-              </div>
-            </div>
-
             {/* Projects Grid */}
             <div className="px-0 sm:px-40 py-10 grid grid-cols-1 sm:grid-cols-2 gap-8 items-start">
-              {filteredProjects.map((project) =>
+              {projects.map((project) =>
                 isMobile ? (
-                  <MobileProjectCard
-                    key={project.id}
-                    project={project}
-                    getStatusColor={getStatusColor}
-                    getComplexityColor={getComplexityColor}
-                  />
+                  <MobileProjectCard key={project.id} project={project} />
                 ) : (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                    getStatusColor={getStatusColor}
-                    getComplexityColor={getComplexityColor}
-                  />
+                  <ProjectCard key={project.id} project={project} />
                 ),
               )}
             </div>
           </motion.div>
-
-          {/* No Results */}
-          {filteredProjects.length === 0 && (
-            <div className="text-center py-12">
-              <p
-                className="text-muted-foreground text-lg"
-                style={{ fontFamily: "Lora" }}
-              >
-                No projects found matching your criteria.
-              </p>
-              <motion.button
-                onClick={() => {
-                  setSelectedCategory("all");
-                  setSelectedComplexity("all");
-                  setShowFeaturedOnly(false);
-                }}
-                onMouseEnter={() => setClearFilterHover(true)}
-                onMouseLeave={() => setClearFilterHover(false)}
-                className="mt-2 text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
-              >
-                <div className="inline-block">
-                  Clear Filters
-                  {clearFilterHover && <Emphasis className="relative" />}
-                </div>
-              </motion.button>
-            </div>
-          )}
         </div>
       </div>
 

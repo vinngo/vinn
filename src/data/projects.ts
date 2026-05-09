@@ -94,7 +94,7 @@ export const projects: Project[] = [
       "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/cryb-demo.mp4#t=20,60",
     demoUrl: "https://cryb.vercel.app",
     githubUrl: "https://github.com/vinngo/cryb",
-    featured: true,
+    featured: false,
     status: "completed",
   },
   {
@@ -109,7 +109,7 @@ export const projects: Project[] = [
       "https://pub-f15720f21a45482baa0d7d4ed05f708b.r2.dev/fabula-demo.mp4",
     demoUrl: "https://fabula-one.vercel.app",
     githubUrl: "https://github.com/vinngo/fabula",
-    featured: true,
+    featured: false,
     status: "in-progress",
   },
   {
