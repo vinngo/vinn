@@ -4,6 +4,7 @@ import Hero from "./components/sections/Hero";
 import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import CTA from "./components/sections/CTA";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Experience />
         <Projects />
         <CTA />
+        <Footer />
       </Layout>
     </ThemeProvider>
   );

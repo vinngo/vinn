@@ -8,7 +8,7 @@ export default function CTA() {
   const [linkedinHover, setLinkedinHover] = useState(false);
 
   return (
-    <section className="py-20 bg-background">
+    <section className="pb-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <div className="p-8">
@@ -19,6 +19,7 @@ export default function CTA() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <motion.button
@@ -27,7 +28,10 @@ export default function CTA() {
                 className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
               >
                 <div className="inline-block">
-                  <a href="https://calendly.com/ngovincent9593/30min" className="mb-1">
+                  <a
+                    href="https://calendly.com/ngovincent9593/30min"
+                    className="mb-1"
+                  >
                     schedule a call
                   </a>
                   {scheduleHover && <Emphasis className="relative" />}
@@ -39,7 +43,10 @@ export default function CTA() {
                 className="text-md text-muted-foreground font-light font-mono p-3 tracking-tighter cursor-pointer"
               >
                 <div className="inline-block">
-                  <a href="https://www.linkedin.com/in/vinngo/" className="mb-1">
+                  <a
+                    href="https://www.linkedin.com/in/vinngo/"
+                    className="mb-1"
+                  >
                     connect on linkedin
                   </a>
                   {linkedinHover && <Emphasis className="relative" />}

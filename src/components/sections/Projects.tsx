@@ -157,9 +157,7 @@ function MobileProjectCard({ project }: ProjectCardProps) {
 function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="bg-card rounded-lg border border-border overflow-hidden hover:shadow-lg transition-shadow">
-      <Expandable
-        trigger={<ProjectCardTrigger project={project} />}
-      >
+      <Expandable trigger={<ProjectCardTrigger project={project} />}>
         <ExpandableContent className="px-6 pb-6">
           {/* Description */}
           <p className="text-muted-foreground font-extralight text-sm mb-4">
@@ -219,6 +217,7 @@ export default function Projects() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             {/* Projects Grid */}

@@ -11,6 +11,7 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
         <h2
@@ -24,6 +25,7 @@ export default function SectionTitle({ title, subtitle }: SectionTitleProps) {
         className="text-xl text-muted-foreground font-light font-mono tracking-tighter max-w-2xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }}
       >
         {subtitle}
