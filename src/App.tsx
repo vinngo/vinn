@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Layout from "./components/layout/Layout";
 import Hero from "./components/sections/Hero";
@@ -16,6 +17,7 @@ function App() {
         <CTA />
         <Footer />
       </Layout>
+      <Analytics />
     </ThemeProvider>
   );
 }
