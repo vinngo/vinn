@@ -62,7 +62,7 @@ function ProjectCardTrigger({ project }: ProjectCardProps) {
             {isOpen && <Emphasis />}
           </div>
           {project.featured && (
-            <span className="px-2 py-1 text-foreground text-xs rounded-full shrink-0 ml-2">
+            <span className="px-2 py-1 text-foreground font-mono text-xs rounded-full shrink-0 ml-2">
               Featured
             </span>
           )}

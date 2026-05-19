@@ -1,4 +1,3 @@
-import { Github, Linkedin } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function Hero() {
@@ -20,8 +19,8 @@ export default function Hero() {
               </motion.h1>
             </div>
             <motion.p
-              className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6 font-light"
-              style={{ fontFamily: "Lora, serif" }}
+              className="text-xl sm:text-2xl md:text-3xl text-muted-foreground mb-6"
+              style={{ fontFamily: "Lora, mono  " }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -50,17 +49,17 @@ export default function Hero() {
           >
             <a
               href="https://github.com/vinngo/"
-              className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
+              className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 font-mono transform"
               aria-label="GitHub"
             >
-              <Github className="h-6 w-6" />
+              gh
             </a>
             <a
               href="https://www.linkedin.com/in/vinngo/"
-              className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 transform"
+              className="p-3 text-muted-foreground hover:text-primary transition-colors hover:scale-110 font-mono transform"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-6 w-6" />
+              li
             </a>
           </motion.div>
         </div>
