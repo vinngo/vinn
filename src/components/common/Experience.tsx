@@ -1,4 +1,4 @@
-import type { Experience } from "../sections/Experience";
+import type { Experience } from "@/data/experience";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
