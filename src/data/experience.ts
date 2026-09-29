@@ -65,4 +65,14 @@ export const experiences: Experience[] = [
       `Designed forward proxy using EC2 Fargate, Application Load Balancer, Cloudwatch, and Route 53, reducing request latency by roughly 80%`],
     current: true,
   },
+  {
+    type: "work",
+    title: "Software Development Engineer",
+    organization: "Amazon Web Services (AWS)",
+    location: "Seattle, WA",
+    period: "Summer 2027 - Present",
+    description: "incoming",
+    highlights: [],
+    current: false,
+  }
 ];
