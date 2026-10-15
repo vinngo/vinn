@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { ExpandableContext, useExpandable } from "./expandable-context";
 
 interface ExpandableProps {
@@ -11,19 +12,23 @@ interface ExpandableProps {
   className?: string;
 }
 
+// Only a thin line across the middle of the viewport counts as "in view", so
+// the entry the reader is focused on opens and entries scrolled past or not
+// yet reached close. Keeping it thin means one entry opening can't push its
+// neighbours in and out of view and make them flicker.
+const IN_VIEW_MARGIN = "-49% 0px -50% 0px";
+
 function Expandable({ trigger, children, className }: ExpandableProps) {
+  const ref = React.useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { margin: IN_VIEW_MARGIN });
+  const isMobile = useMediaQuery("(max-width: 767px)"); // below Tailwind's md breakpoint
   const [isOpen, setIsOpen] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(false);
 
+  // Scrolling drives open/close; hover and tap only override it until the
+  // next time the entry enters or leaves the viewport band.
   React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // 768px is Tailwind's md breakpoint
-    };
-
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+    setIsOpen(inView);
+  }, [inView]);
 
   const handleClick = () => {
     if (isMobile) {
@@ -39,13 +44,14 @@ function Expandable({ trigger, children, className }: ExpandableProps) {
 
   const handleMouseLeave = () => {
     if (!isMobile) {
-      setIsOpen(false);
+      setIsOpen(inView);
     }
   };
 
   return (
     <ExpandableContext.Provider value={{ isOpen, setIsOpen }}>
       <div
+        ref={ref}
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -93,7 +99,7 @@ function ExpandableContent({
       animate={{
         height: isOpen ? height : peekHeight,
       }}
-      transition={{ duration: 0.2, ease: "easeInOut" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className="overflow-hidden relative"
     >
       <div
@@ -103,9 +109,12 @@ function ExpandableContent({
       >
         {children}
       </div>
-      {!isOpen && (
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      )}
+      <motion.div
+        initial={false}
+        animate={{ opacity: isOpen ? 0 : 1 }}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none"
+      />
     </motion.div>
   );
 }

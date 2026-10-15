@@ -1,5 +1,4 @@
 import type { Experience } from "@/data/experience";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 import { Expandable, ExpandableContent } from "../ui/fabula/expandable";
 import { useExpandable } from "../ui/fabula/expandable-context";
@@ -14,9 +13,9 @@ function ExperienceTrigger({ experience }: ExperienceProps) {
   const { isOpen } = useExpandable();
 
   return (
-    <div className="flex w-full gap-2 mb-5 font-light justify-between items-start">
+    <div className="flex flex-col sm:flex-row w-full gap-1 sm:gap-2 mb-5 font-light justify-between items-start">
       <div
-        className="text-2xl"
+        className="text-xl sm:text-2xl"
         style={{
           fontFamily: "Lora",
         }}
@@ -29,50 +28,22 @@ function ExperienceTrigger({ experience }: ExperienceProps) {
           <div className="relative mb-2">{experience.title}</div>
         </div>
       </div>
-      <div className="flex items-center gap-2 ml-auto text-right">
+      <div className="flex items-center gap-2 sm:ml-auto sm:text-right">
         <motion.div
-          className="pl-3 flex-col flex text-lg text-muted-foreground font-light whitespace-nowrap text-right"
+          className="flex flex-row flex-wrap gap-x-2 text-sm text-muted-foreground font-light sm:pl-3 sm:flex-col sm:text-lg sm:whitespace-nowrap sm:text-right"
           style={{ fontFamily: "Lora" }}
           animate={{ opacity: isOpen ? 1 : 0.2 }}
         >
-          {experience.period}
-          <br />
-          {experience.location}
+          <span>{experience.period}</span>
+          <span className="sm:hidden">&middot;</span>
+          <span>{experience.location}</span>
         </motion.div>
       </div>
     </div>
   );
 }
 
-function MobileExperience({ experience }: ExperienceProps) {
-  return (
-    <div className="font-light">
-      <div style={{ fontFamily: "Lora" }}>
-        <div className="text-xl mb-1">{experience.organization}</div>
-        <div className="font-mono text-sm text-muted-foreground mb-1">
-          {experience.title}
-        </div>
-        <div
-          className="text-sm text-muted-foreground mb-3"
-          style={{ fontFamily: "Lora" }}
-        >
-          {experience.period} &middot; {experience.location}
-        </div>
-      </div>
-      <div className="font-extralight text-sm font-sans">
-        <div className="text-foreground">{experience.description}</div>
-      </div>
-    </div>
-  );
-}
-
 export default function ExperienceComponent({ experience }: ExperienceProps) {
-  const isMobile = useMediaQuery("(max-width: 640px)");
-
-  if (isMobile) {
-    return <MobileExperience experience={experience} />;
-  }
-
   return (
     <Expandable trigger={<ExperienceTrigger experience={experience} />}>
       <ExpandableContent className="font-extralight text-sm font-sans">
