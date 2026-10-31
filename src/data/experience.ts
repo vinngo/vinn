@@ -48,7 +48,7 @@ export const experiences: Experience[] = [
     location: "Santa Cruz, CA",
     period: "2023 - 2027 (Expected)",
     description:
-      "Pursuing CS with minor in Statistics. Comprehensive understanding of DSA, Computer Architecture, Systems, and AI/ML",
+      "Pursuing CS with minor in Statistics. Comprehensive understanding of DSA, Computer Architecture, Systems, and AI/ML. Concentrating in Systems",
     highlights: [
       `Relevant Coursework: Data Structures & Algorithms, Computer Architecture, Computer Systems, Software Engineering, Machine Learning, Statistics and Probability Theory, Linear Algebra`,
     ],
